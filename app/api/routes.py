@@ -9,3 +9,8 @@ from flask import jsonify, render_template
 def search_author(author, limit, page):
     authors = Author.query.filter(Author.name.contains(author)).limit(limit).offset(page*limit).all()
     return jsonify([author.to_dict() for author in authors])
+
+@bp.route('/')
+@bp.route('/hello')
+def hellp():
+    return "Hello"
